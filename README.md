@@ -17,5 +17,5 @@ go get github.com/maxymania/stream-ciphers-go/purechaos1
 import "github.com/maxymania/stream-ciphers-go/sexysecret"
 
 // import PureChaos1
-import "go get github.com/maxymania/stream-ciphers-go/purechaos1"
+import "github.com/maxymania/stream-ciphers-go/purechaos1"
 ```
