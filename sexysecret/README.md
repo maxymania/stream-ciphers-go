@@ -1,6 +1,6 @@
 # sexysecret
 --
-    import "sexysecret"
+    import "github.com/maxymania/stream-ciphers-go/sexysecret"
 
 
 ## Usage
@@ -30,3 +30,4 @@ func NewEncrypter(key []byte) *Cipher
 ```go
 func (c *Cipher) XORKeyStream(dst, src []byte)
 ```
+Note that SexySecret does not use XOR. It's just called XOR to implement chipher.Stream.
