@@ -1,6 +1,6 @@
 # purechaos1
 --
-    import "purechaos1"
+    import "github.com/maxymania/stream-ciphers-go/purechaos1"
 
 
 ## Usage
@@ -30,3 +30,4 @@ func NewEncrypter(key []byte) *Cipher
 ```go
 func (c *Cipher) XORKeyStream(dst, src []byte)
 ```
+Note that PureChaos1 does not use XOR. It's just called XOR to implement chipher.Stream.
