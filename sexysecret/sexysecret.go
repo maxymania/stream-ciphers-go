@@ -1,0 +1,51 @@
+package sexysecret
+
+type Cipher struct{
+	buffer []byte
+	key []byte
+	bp int
+	kp int
+	decrypt bool
+	lk,lb int
+}
+func NewEncrypter(key []byte) *Cipher {
+	return newCipher(key,false)
+}
+func NewDecrypter(key []byte) *Cipher {
+	return newCipher(key,true)
+}
+func newCipher(key []byte,decrypt bool) *Cipher{
+	lk := len(key)
+	lb := lk+1
+	c := new(Cipher)
+	c.buffer = make([]byte,lb)
+	c.key = make([]byte,lk)
+	c.bp = 0
+	c.kp = 0
+	c.decrypt = decrypt
+	c.lk,c.lb = lk,lb
+	sum := byte(0)
+	for i,b := range key {
+		c.key[i] = b
+		c.buffer[i] = b
+		sum^=b
+	}
+	c.buffer[lk] = sum
+	return  c
+}
+
+func (c *Cipher) XORKeyStream(dst, src []byte) {
+	for i := 0; i < len(src); i++ {
+		if c.decrypt {
+			o := c.buffer[c.bp]
+			c.buffer[c.bp] = src[i]
+			dst[i] = sbox_i[ sbox_i[ c.buffer[c.bp] ] - c.key[c.kp] ] - o
+			
+		} else {
+			c.buffer[c.bp] = sbox[ sbox[src[i] + c.buffer[c.bp]] + c.key[c.kp] ]
+			dst[i] = c.buffer[c.bp]
+		}
+		c.kp = (c.kp+1)%c.lk
+		c.bp = (c.bp+1)%c.lb
+	}
+}
