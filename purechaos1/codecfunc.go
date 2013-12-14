@@ -1,3 +1,9 @@
+// Copyright (c) 2011-2013 Simon Schmidt
+// Permission to use, copy, modify, and distribute this software and its
+// documentation, for any purpose with or without fee is hereby granted, provided
+// that the above copyright notice appears in all copies of the source code.
+// It is provided "as is" without express or implied warranty.
+
 package purechaos1
 
 func encodeByte(data, key byte) byte {

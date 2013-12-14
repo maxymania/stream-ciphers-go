@@ -20,4 +20,4 @@ import "github.com/maxymania/stream-ciphers-go/sexysecret"
 import "github.com/maxymania/stream-ciphers-go/purechaos1"
 ```
 
-LICENSE: Public Domain
+LICENSE: See LICENSE
